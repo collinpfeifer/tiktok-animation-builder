@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <style>
+      #ball {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: green;
+      }
+      #background {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        right: 0;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ball"></div>
+    <svg
+      width="200"
+      height="200"
+      viewBox="0 0 200 200"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="
+    M20,100
+    A80,30 0 1,1 180,100
+    A80,30 0 1,1 20,100"
+        fill="none"
+        stroke="black"
+      />
+    </svg>
+
+    <script>
+      var path = anime.path('svg path');
+      anime({
+        targets: '#ball',
+        translateX: path('x'),
+        translateY: path('y'),
+        rotate: path('angle'),
+        easing: 'linear',
+        duration: 2000,
+        loop: true,
+      });
+    </script>
+    <div id="background"></div>
+  </body>
+</html>
